@@ -1,0 +1,6 @@
+:set prompt "\ESC[1;35m\x03BB> \ESC[m"
+
+:seti -XPartialTypeSignatures
+:seti -XLambdaCase
+:seti -XNumericUnderscores 
+:seti -XOverloadedStrings
