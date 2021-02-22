@@ -68,7 +68,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -160,3 +160,11 @@ export PATH=$PATH:$PROJ/spinner/target/build
 
 # Adding nvim nightly to PATH
 export PATH=~/.local/src/github/neovim/build/bin:$PATH
+
+export PATH=$PATH:~/.local/bin
+
+export TESSDATA_PREFIX=~/.local/src/github/tessdata_fast
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/tron/.sdkman"
+[[ -s "/home/tron/.sdkman/bin/sdkman-init.sh" ]] && source "/home/tron/.sdkman/bin/sdkman-init.sh"

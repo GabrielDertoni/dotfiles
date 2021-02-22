@@ -32,3 +32,7 @@ set incsearch
 set ignorecase
 set smartcase
 set gdefault
+
+" Text wrapping
+" NOTE: Use gq<move> to wrap words
+set textwidth=80

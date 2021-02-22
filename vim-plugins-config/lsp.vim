@@ -40,6 +40,8 @@ nnoremap <leader>gi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>gr :lua vim.lsp.buf.references()<CR>
 nnoremap <leader>rr :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>e :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+" Restart the lua client.
+nnoremap <leader>re :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()

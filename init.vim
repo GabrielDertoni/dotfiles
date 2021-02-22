@@ -25,11 +25,12 @@ Plug 'airblade/vim-rooter'
 Plug 'tpope/vim-fugitive'
 
 " Others
-Plug 'tweekmonster/gofmt.vim'
+" Plug 'tweekmonster/gofmt.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'vuciv/vim-bujo'
 Plug 'tpope/vim-dispatch'
+Plug 'machakann/vim-highlightedyank'
 
 " Color schemes
 Plug 'morhetz/gruvbox'
@@ -57,7 +58,7 @@ Plug 'Rust-lang/rust.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 Plug 'JuliaEditorSupport/julia-vim'
 
 " Cheat cheat
@@ -68,6 +69,9 @@ Plug 'tpope/vim-surround'
 
 Plug 'racer-rust/vim-racer'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 
@@ -117,7 +121,7 @@ let $FZF_DEFAULT_OPTS='--reverse'
 nnoremap <C-C> <ESC>
 
 nnoremap <leader>gc :GCheckout<CR>
-nnoremap <C-p> :GFiles --cached --others --exclude-standard<CR>
+" nnoremap <C-p> :GFiles --cached --others --exclude-standard<CR>
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
@@ -131,6 +135,9 @@ nnoremap <Leader>rp :resize 100<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap X "_d
+nnoremap X "_x
+" Search highlighted text
+vnoremap * "ay/\<<C-r>a\><CR>
 
 " Tabularize
 nnoremap <leader>t :Tab /
@@ -146,6 +153,10 @@ vnoremap , "0p
 
 " Paste at the end of the line
 nnoremap P $"0p
+
+" Resize window
+nnoremap <C-Right> <C-W>>
+nnoremap <C-Left> <C-W><
 
 " Buffer navigation
 nnoremap <leader><leader> <C-^>
@@ -176,6 +187,11 @@ if executable(s:clip)
     augroup END
 endif
 
+" Already have yy for yanking the entire line, so Y yank to the end of the line
+nnoremap <silent>Y y$
+
+let g:highlightedyank_highlight_duration = 200
+
 " File templates
 " autocmd BufNewFile  *.c 0r ~/.config/nvim/templates/skeleton.c
 " autocmd BufNewFile  *.cpp 0r ~/.config/nvim/templates/skeleton.cpp
@@ -203,7 +219,10 @@ nnoremap <M-j> :sp +term<CR>
 nnoremap <M-t> :tabe +term<CR>
 
 " Compilation
-nnoremap <leader>ru :execute "10sp +" . fnameescape(expand("term " . expand(compile_cmd)))<CR>
+let compile_cmd = ""
+nnoremap <leader>ru :execute "10sp +" . fnameescape(expand("term " . expand(compile_cmd)))<CR>i
+nnoremap <leader>c :let compile_cmd = input("Compile command > ", compile_cmd)<CR>
+nnoremap <leader>rc :execute "tabe +" . fnameescape(expand("term " . expand(input("Run command > "))))<CR>
 
 augroup MY_GROUP
     autocmd!
@@ -214,3 +233,9 @@ augroup MY_GROUP
     autocmd FileType julia let compile_cmd="julia %"
 augroup END
 
+
+" Spellchecking
+nnoremap <leader>ss :set spell!<CR>
+
+" Formatting, format inside paragraph
+nnoremap <leader>Q gqip
