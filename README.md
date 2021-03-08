@@ -22,7 +22,7 @@ Link files in the repo to files in your system
 cd ~/dotfiles
 ln -s $(pwd)/.zshrc ~/.zshrc
 ln -s $(pwd)/init.vim ~/.config/nvim/init.vim
-ln -s $(pwd)/vim-plugins-config ~/.config/nvim/plugins
+ln -s $(pwd)/vim-plugins-config ~/.config/nvim/plugin
 ```
 
 ### Setting-up nvim
