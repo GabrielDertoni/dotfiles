@@ -11,7 +11,10 @@
 5. Install (vim-plug)[https://github.com/junegunn/vim-plug] and be sure install
    the neovim version.
 6. Create additional folders: `mkdir -p ~/.config/nvim/plugins`.
-7. Install other stuff that I use:
+7. Install (tmux)[https://github.com/tmux/tmux/wiki]
+8. Install (tmux themepack)[https://github.com/jimeh/tmux-themepack] (pretty
+   tmux).
+8. Install other stuff that I use:
    - (exa)[https://github.com/ogham/exa]
 
 ### Installing the dotfiles
@@ -26,6 +29,7 @@ cd ~/dotfiles
 ln -s $(pwd)/.zshrc ~/.zshrc
 ln -s $(pwd)/init.vim ~/.config/nvim/init.vim
 ln -s $(pwd)/vim-plugins-config ~/.config/nvim/plugin
+ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 ```
 
 ### Setting-up nvim
