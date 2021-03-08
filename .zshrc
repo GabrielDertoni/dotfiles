@@ -106,9 +106,6 @@ export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# To use nvim appimage
-# alias nvim=$HOME/nvim/nvim.appimage
-
 # Alias for python3
 alias py3=python3
 
@@ -123,9 +120,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 alias ls=exa
 
 # Personal configs
-export PROJ=/mnt/c/Users/Gabriel/Documents/Projetos
-export EX=~/Desktop/Exercícios
-export USR=/mnt/c/Users/Gabriel
+source ~/.personalrc
 
 # Using zaproxy
 alias zaproxy="java -jar /opt/zaproxy/zap-2.9.0.jar"

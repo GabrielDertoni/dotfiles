@@ -238,6 +238,12 @@ augroup MY_GROUP
     autocmd FileType julia let compile_cmd="julia %"
 augroup END
 
+" In ~/.personalrc use the same highlighting as in zsh files.
+augroup PERSONALRC
+    autocmd!
+    autocmd BufNewFile,BufRead **/.personalrc set filetype=zsh
+augroup END
+
 
 " Spellchecking
 nnoremap <leader>ss :set spell!<CR>
