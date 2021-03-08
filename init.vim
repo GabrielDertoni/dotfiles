@@ -140,7 +140,7 @@ nnoremap X "_x
 vnoremap * "ay/\<<C-r>a\><CR>
 
 " Tabularize
-nnoremap <leader>t :Tab /
+nnoremap <leader>t :Tabularize /
 
 inoremap <C-c> <esc>
 
@@ -163,7 +163,7 @@ nnoremap <leader><leader> <C-^>
 
 " Terminal key mapping
 tnoremap <C-N> <C-\><C-N>
-nnoremap <expr> q &buftype == "terminal" ? ':q<CR>' : 'q'
+nnoremap <silent><expr> q &buftype == "terminal" ? ':q<CR>' : 'q'
 
 " C compilation inside vim.
 autocmd FileType c nnoremap <F5> :sp +term\ make
@@ -219,10 +219,15 @@ nnoremap <M-j> :sp +term<CR>
 nnoremap <M-t> :tabe +term<CR>
 
 " Compilation
-let compile_cmd = ""
+let g:compile_cmd = ""
 nnoremap <leader>ru :execute "10sp +" . fnameescape(expand("term " . expand(compile_cmd)))<CR>i
 nnoremap <leader>c :let compile_cmd = input("Compile command > ", compile_cmd)<CR>
 nnoremap <leader>rc :execute "tabe +" . fnameescape(expand("term " . expand(input("Run command > "))))<CR>
+
+augroup RUST
+    autocmd!
+    autocmd FileType rust let g:compile_cmd = "cargo r"
+augroup END
 
 augroup MY_GROUP
     autocmd!
@@ -239,3 +244,10 @@ nnoremap <leader>ss :set spell!<CR>
 
 " Formatting, format inside paragraph
 nnoremap <leader>Q gqip
+
+" Moving between tabs
+nnoremap <silent> <C-S-Right> gt
+nnoremap <silent> <C-S-Left> gT
+
+" Open vimrc (init.vim)
+nnoremap <leader>vrc :tabe ~/dotfiles/init.vim<CR>

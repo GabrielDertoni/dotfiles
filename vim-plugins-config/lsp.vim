@@ -17,7 +17,7 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>xd', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opts)
     --]]
   end
-  local servers = {'clangd', 'tsserver', 'pyls', 'gopls', 'rust_analyzer'}
+  local servers = {'clangd', --[[ 'tsserver',--]] 'pyls', 'gopls', 'rust_analyzer'}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
