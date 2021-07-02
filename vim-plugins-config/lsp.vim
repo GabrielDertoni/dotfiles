@@ -32,8 +32,8 @@ EOF
 " lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
 
 " Nvim-lsp
-nnoremap <leader>gd :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>gy :lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> <leader>gd :lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <leader>gy :lua vim.lsp.buf.type_definition()<CR>
 " nnoremap <leader>gn :lua vim.lsp.diagnostic.goto_next()<CR>
 " nnoremap <leader>gp :lua vim.lsp.diagnostic.goto_prev()<CR>
 " nnoremap <leader>gi :lua vim.lsp.buf.implementation()<CR>
@@ -41,7 +41,7 @@ nnoremap <leader>gy :lua vim.lsp.buf.type_definition()<CR>
 " nnoremap <leader>rr :lua vim.lsp.buf.rename()<CR>
 
 " Restart the lua client.
-nnoremap <leader>re :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>
+nnoremap <silent> <leader>re :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>
 
 
 " function! s:show_documentation()
