@@ -42,7 +42,9 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'tjdevries/nlua.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'glepnir/lspsaga.nvim'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -60,6 +62,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " Plug 'fatih/vim-go'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'pest-parser/pest.vim'
 
 " Cheat cheat
 Plug 'dbeniamine/cheat.sh-vim'
@@ -244,6 +247,12 @@ augroup PERSONALRC
     autocmd BufNewFile,BufRead **/.personalrc set filetype=zsh
 augroup END
 
+" Syntax highligting for tapelang
+augroup TAPELANG
+    autocmd!
+    autocmd BufNewFile,BufRead **/*.tape set syntax=tape
+augroup END
+
 
 " Spellchecking
 nnoremap <leader>ss :set spell!<CR>
@@ -257,3 +266,29 @@ nnoremap <silent> <C-S-Left> gT
 
 " Open vimrc (init.vim)
 nnoremap <leader>vrc :tabe ~/dotfiles/init.vim<CR>
+
+let g:surround_116 = "t\rt"
+vnoremap <leader>S :call PromptSurround()<CR>
+
+function PromptSurround()
+    let readable = substitute(g:surround_116, "\r", "\\\\r", "gg")
+    let g:surround_116 = substitute(input("Surround by: ", readable), "\\\\r", "\r", "gg")
+    execute "normal gvSt"
+endfunction
+
+
+
+nnoremap <leader>i :call PromptProg()<CR>
+vnoremap <leader>i :<C-U>call VPromptProg()<CR>
+
+let g:interpreter = ""
+function PromptProg()
+    let g:interpreter = input("Interpreter: ", expand(g:interpreter))
+    put = execute('w !' . expand(g:interpreter))
+endfunction
+
+let g:interpreter = ""
+function VPromptProg()
+    let g:interpreter = input("Interpreter: ", expand(g:interpreter))
+    '>put = execute('''<,''>w !' . expand(g:interpreter))
+endfunction
