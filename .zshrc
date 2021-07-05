@@ -141,18 +141,6 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
 compinit
 
-# Adding racer to PATH
-export PATH=$PATH:~/.local/src/github/racer/target/release
-
-alias chrome="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
-export BROWSER=chrome
-
-# Adding julia to PATH
-export PATH=$PATH:~/.local/src/github/julia/usr/bin
-
-# Adding spin
-export PATH=$PATH:$PROJ/spinner/target/build
-
 # Adding nvim nightly to PATH
 export PATH=~/.local/src/github/neovim/build/bin:$PATH
 
@@ -162,4 +150,4 @@ export TESSDATA_PREFIX=~/.local/src/github/tessdata_fast
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/tron/.sdkman"
-[[ -s "/home/tron/.sdkman/bin/sdkman-init.sh" ]] && source "/home/tron/.sdkman/bin/sdkman-init.sh"
+source /opt/ros/melodic/setup.zsh

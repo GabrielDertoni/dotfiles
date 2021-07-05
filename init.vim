@@ -38,18 +38,19 @@ Plug 'chriskempson/base16-vim'
 Plug 'Iron-E/nvim-highlite'
 
 " LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'tjdevries/nlua.nvim'
-Plug 'tjdevries/lsp_extensions.nvim'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'tjdevries/nlua.nvim'
+" Plug 'tjdevries/lsp_extensions.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Semantic language support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
-" Semantic language support
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Syntactic language support
 Plug 'cespare/vim-toml'
@@ -67,13 +68,20 @@ Plug 'dbeniamine/cheat.sh-vim'
 " Sourounding
 Plug 'tpope/vim-surround'
 
-Plug 'racer-rust/vim-racer'
+" Plug 'racer-rust/vim-racer'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Plug 'prabirshrestha/asyncomplete.vim'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce (not to mention that libvte based terminals
+" incorrectly contain bce in their terminfo files). This causes
+" incorrect background rendering when using a color theme with a
+" background color.
+let &t_ut=''
 
 let g:deoplete#enable_at_startup = 1
 
@@ -92,15 +100,22 @@ let g:gruvbox_invert_selection='0'
 
 set termguicolors
 
+let &t_ut=''
+
 " Colors
 set background=dark
 " colorscheme gruvbox
 colorscheme base16-gruvbox-dark-hard
 
+" disable transparent background
+set background=dark
+
 syntax on
 
 " Highlighting
 highlight ColorColumn ctermbg=18 guibg=#403a37
+highlight Normal ctermbg=18 ctermfg=7 guibg=#1d2022
+
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -178,15 +193,6 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-" WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
-
 " Already have yy for yanking the entire line, so Y yank to the end of the line
 nnoremap <silent>Y y$
 
@@ -221,13 +227,29 @@ nnoremap <M-t> :tabe +term<CR>
 " Compilation
 let g:compile_cmd = ""
 nnoremap <leader>ru :execute "10sp +" . fnameescape(expand("term " . expand(compile_cmd)))<CR>i
-nnoremap <leader>c :let compile_cmd = input("Compile command > ", compile_cmd)<CR>
+nnoremap <leader>cc :let compile_cmd = input("Compile command > ", compile_cmd)<CR>
 nnoremap <leader>rc :execute "tabe +" . fnameescape(expand("term " . expand(input("Run command > "))))<CR>
 
 augroup RUST
     autocmd!
     autocmd FileType rust let g:compile_cmd = "cargo r"
 augroup END
+
+augroup PYTHON
+    autocmd!
+    autocmd FileType python let g:compile_cmd = "python3 %:p"
+augroup END
+
+augroup C
+    autocmd!
+    autocmd FileType c let g:compile_cmd = "make %:r && %:p"
+augroup END
+
+augroup JS
+    autocmd!
+    autocmd FileType javascript set shiftwidth=2 tabstop=2
+augroup END
+
 
 augroup MY_GROUP
     autocmd!
@@ -243,7 +265,6 @@ augroup PERSONALRC
     autocmd!
     autocmd BufNewFile,BufRead **/.personalrc set filetype=zsh
 augroup END
-
 
 " Spellchecking
 nnoremap <leader>ss :set spell!<CR>
