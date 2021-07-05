@@ -23,7 +23,7 @@ require 'nvim-treesitter.configs'.setup {
         "rust",
         "c",
         "cpp",
-        "haskell",
+        -- "haskell",
         "python"
     }
 }
