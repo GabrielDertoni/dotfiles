@@ -148,6 +148,8 @@ export PATH=$PATH:~/.local/bin
 
 export TESSDATA_PREFIX=~/.local/src/github/tessdata_fast
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/tron/.sdkman"
 source /opt/ros/melodic/setup.zsh

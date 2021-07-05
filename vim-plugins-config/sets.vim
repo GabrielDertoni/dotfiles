@@ -20,6 +20,7 @@ set signcolumn=yes
 " set termguicolors
 set colorcolumn=80,120
 set nohlsearch
+set spelllang=pt_br,en_us,de
 set complete+=kspell
 set completeopt=menuone,noinsert,noselect
 
