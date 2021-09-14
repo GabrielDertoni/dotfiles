@@ -3,11 +3,9 @@ call plug#begin('~/.vim/plugged')
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'jremmen/vim-ripgrep'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
 
 " TMUX integration
 Plug 'christoomey/vim-tmux-navigator'
@@ -71,12 +69,6 @@ Plug 'dbeniamine/cheat.sh-vim'
 " Sourounding
 Plug 'tpope/vim-surround'
 
-" Plug 'racer-rust/vim-racer'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
 call plug#end()
 
 " vim hardcodes background color erase even if the terminfo file does
@@ -102,8 +94,6 @@ endif
 let g:gruvbox_invert_selection='0'
 
 set termguicolors
-
-let &t_ut=''
 
 " Colors
 set background=dark
