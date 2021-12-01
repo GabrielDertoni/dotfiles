@@ -22,10 +22,12 @@ EOF
 " lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
 
 " Nvim-lsp
-nnoremap <silent> <leader>gd :lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <leader>gy :lua vim.lsp.buf.type_definition()<CR>
-" nnoremap <leader>gn :lua vim.lsp.diagnostic.goto_next()<CR>
-" nnoremap <leader>gp :lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> K <Cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <leader>ca <Cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <leader>gd <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <leader>gy <Cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <leader>gn :lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <leader>gp :lua vim.lsp.diagnostic.goto_prev()<CR>
 " nnoremap <leader>gi :lua vim.lsp.buf.implementation()<CR>
 " nnoremap <leader>gr :lua vim.lsp.buf.references()<CR>
 " nnoremap <leader>rr :lua vim.lsp.buf.rename()<CR>

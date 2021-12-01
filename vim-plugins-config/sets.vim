@@ -33,6 +33,7 @@ set incsearch
 set ignorecase
 set smartcase
 set gdefault
+set list
 
 " Text wrapping
 " NOTE: Use gq<move> to wrap words
@@ -42,6 +43,7 @@ highlight Cursor guifg=white guibg=white
 highlight iCursor guifg=white guibg=white
 
 set guicursor=n-v-c:block-Cursor
-set guicursor+=i:ver100-iCursor
-set guicursor+=n-v-c:blinkon0
-set guicursor+=i:blinkwait10
+set guicursor=i:block-Cursor
+" set guicursor+=i:ver100-iCursor
+set guicursor+=n:blinkon0
+set guicursor+=i:blinkon0

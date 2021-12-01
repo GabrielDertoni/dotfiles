@@ -32,6 +32,7 @@ Plug 'machakann/vim-highlightedyank'
 
 " Color schemes
 Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Iron-E/nvim-highlite'
 
@@ -98,7 +99,9 @@ set termguicolors
 " Colors
 set background=dark
 " colorscheme gruvbox
-colorscheme base16-gruvbox-dark-hard
+" colorscheme base16-gruvbox-dark-hard
+colorscheme ayu
+let ayucolor = "dark"
 
 " disable transparent background
 set background=dark
@@ -158,9 +161,6 @@ inoremap <silent><expr> <C-space> coc#refresh()
 " Faster pasting
 nnoremap , "0p
 vnoremap , "0p
-
-" Paste at the end of the line
-nnoremap P $"0p
 
 " Resize window
 nnoremap <C-Right> <C-W>>
@@ -265,6 +265,11 @@ augroup TAPELANG
     autocmd BufNewFile,BufRead **/*.tape set syntax=tape
 augroup END
 
+augroup WSL_YANK
+    autocmd!
+    autocmd TextYankPost * call system("clip.exe", @")
+augroup END
+
 " Spellchecking
 nnoremap <leader>ss :set spell!<CR>
 
@@ -286,8 +291,6 @@ function PromptSurround()
     let g:surround_116 = substitute(input("Surround by: ", readable), "\\\\r", "\r", "gg")
     execute "normal gvSt"
 endfunction
-
-
 
 nnoremap <leader>i :call PromptProg()<CR>
 vnoremap <leader>i :<C-U>call VPromptProg()<CR>
