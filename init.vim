@@ -46,7 +46,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'glepnir/lspsaga.nvim'
 
 " Semantic language support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -59,6 +59,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'Rust-lang/rust.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 " Plug 'fatih/vim-go'
 Plug 'JuliaEditorSupport/julia-vim'
@@ -190,24 +191,6 @@ endfun
 nnoremap <silent>Y y$
 
 let g:highlightedyank_highlight_duration = 200
-
-" File templates
-" autocmd BufNewFile  *.c 0r ~/.config/nvim/templates/skeleton.c
-" autocmd BufNewFile  *.cpp 0r ~/.config/nvim/templates/skeleton.cpp
-
-
-" Experimentally integrate YouCompleteMe with vim-multiple-cursors, otherwise    
-" the numerous Cursor events cause great slowness                                
-" (https://github.com/kristijanhusak/vim-multiple-cursors/issues/4)
-
-" function Multiple_cursors_before()                                               
-"   let s:old_ycm_whitelist = g:ycm_filetype_whitelist                           
-"   let g:ycm_filetype_whitelist = {}                                            
-" endfunction                                                                      
-"                                                                                  
-" function Multiple_cursors_after()                                                
-"   let g:ycm_filetype_whitelist = s:old_ycm_whitelist                           
-" endfunction      
 
 " Close all floating windows (sometimes floating windows dont close properly)
 nnoremap <leader>wo <C-w>o
