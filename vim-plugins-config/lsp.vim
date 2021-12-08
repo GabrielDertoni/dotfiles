@@ -43,3 +43,8 @@ nnoremap <silent> <leader>re :lua vim.lsp.stop_client(vim.lsp.get_active_clients
 "     lua vim.lsp.buf.hover()
 "   endif
 " endfunction
+
+
+
+" Kill LSP
+command KillLSP <Cmd>lua vim.lsp.get_client_by_id(1).stop()<CR>
