@@ -3,11 +3,9 @@ call plug#begin('~/.vim/plugged')
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'jremmen/vim-ripgrep'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
 
 " TMUX integration
 Plug 'christoomey/vim-tmux-navigator'
@@ -34,6 +32,7 @@ Plug 'machakann/vim-highlightedyank'
 
 " Color schemes
 Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Iron-E/nvim-highlite'
 
@@ -60,6 +59,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'Rust-lang/rust.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 " Plug 'fatih/vim-go'
 Plug 'JuliaEditorSupport/julia-vim'
@@ -72,12 +72,6 @@ Plug 'dbeniamine/cheat.sh-vim'
 
 " Sourounding
 Plug 'tpope/vim-surround'
-
-" Plug 'racer-rust/vim-racer'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 
@@ -105,12 +99,12 @@ let g:gruvbox_invert_selection='0'
 
 set termguicolors
 
-let &t_ut=''
-
 " Colors
 set background=dark
 " colorscheme gruvbox
-colorscheme base16-gruvbox-dark-hard
+" colorscheme base16-gruvbox-dark-hard
+colorscheme ayu
+let ayucolor = "dark"
 
 " disable transparent background
 set background=dark
@@ -171,9 +165,6 @@ inoremap <silent><expr> <C-space> coc#refresh()
 nnoremap , "0p
 vnoremap , "0p
 
-" Paste at the end of the line
-nnoremap P $"0p
-
 " Resize window
 nnoremap <C-Right> <C-W>>
 nnoremap <C-Left> <C-W><
@@ -202,24 +193,6 @@ endfun
 nnoremap <silent>Y y$
 
 let g:highlightedyank_highlight_duration = 200
-
-" File templates
-" autocmd BufNewFile  *.c 0r ~/.config/nvim/templates/skeleton.c
-" autocmd BufNewFile  *.cpp 0r ~/.config/nvim/templates/skeleton.cpp
-
-
-" Experimentally integrate YouCompleteMe with vim-multiple-cursors, otherwise    
-" the numerous Cursor events cause great slowness                                
-" (https://github.com/kristijanhusak/vim-multiple-cursors/issues/4)
-
-" function Multiple_cursors_before()                                               
-"   let s:old_ycm_whitelist = g:ycm_filetype_whitelist                           
-"   let g:ycm_filetype_whitelist = {}                                            
-" endfunction                                                                      
-"                                                                                  
-" function Multiple_cursors_after()                                                
-"   let g:ycm_filetype_whitelist = s:old_ycm_whitelist                           
-" endfunction      
 
 " Close all floating windows (sometimes floating windows dont close properly)
 nnoremap <leader>wo <C-w>o
@@ -278,6 +251,11 @@ augroup TAPELANG
     autocmd BufNewFile,BufRead **/*.tape set syntax=tape
 augroup END
 
+augroup WSL_YANK
+    autocmd!
+    autocmd TextYankPost * call system("clip.exe", @")
+augroup END
+
 " Spellchecking
 nnoremap <leader>ss :set spell!<CR>
 
@@ -299,8 +277,6 @@ function PromptSurround()
     let g:surround_116 = substitute(input("Surround by: ", readable), "\\\\r", "\r", "gg")
     execute "normal gvSt"
 endfunction
-
-
 
 nnoremap <leader>i :call PromptProg()<CR>
 vnoremap <leader>i :<C-U>call VPromptProg()<CR>

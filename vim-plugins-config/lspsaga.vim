@@ -23,16 +23,16 @@ saga.init_lsp_saga {
 EOF
 
 
-nnoremap <silent> K <Cmd>Lspsaga hover_doc<CR>
+" nnoremap <silent> K <Cmd>Lspsaga hover_doc<CR>
 nnoremap <silent> <leader>e <Cmd>Lspsaga show_line_diagnostics<CR>
 nnoremap <silent> <leader>rr <Cmd>Lspsaga rename<CR>
 nnoremap <silent> <leader>gr <Cmd>Lspsaga lsp_finder<CR>
 inoremap <silent> <silent><C-s> <Cmd>Lspsaga signature_help<CR>
 nnoremap <silent> <leader>gr <Cmd>Lspsaga lsp_finder<CR>
-nnoremap <silent> <leader>gn <Cmd>Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> <leader>gp <Cmd>Lspsaga diagnostic_jump_prev<CR>
+" nnoremap <silent> <leader>gn <Cmd>Lspsaga diagnostics_jump_next<CR>
+" nnoremap <silent> <leader>gp <Cmd>Lspsaga disgnostics_jump_prev<CR>
 nnoremap <silent> <leader>sd <Cmd>Lspsaga preview_definition<CR>
-nnoremap <silent> <leader>sa <Cmd>Lspsaga code_action<CR>
+" nnoremap <silent> <leader>sa <Cmd>Lspsaga code_action<CR>
 
 augroup RUST_CODE_ACTION
     autocmd!
