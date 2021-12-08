@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dertoni/.oh-my-zsh"
+export ZSH="/home/tron/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -149,10 +149,6 @@ export PATH=$PATH:~/.local/bin
 export TESSDATA_PREFIX=~/.local/src/github/tessdata_fast
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/tron/.sdkman"
-source /opt/ros/melodic/setup.zsh
 
 tmuxcwd() {
     tmux command-prompt -I $PWD -p "New session dir:" "attach -c %1"
