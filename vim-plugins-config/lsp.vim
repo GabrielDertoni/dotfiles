@@ -7,19 +7,13 @@ lua << EOF
     require('completion').on_attach()
   end
 
-  local servers = {'clangd', --[[ 'tsserver', 'pyls', --]]'pyright', 'gopls', 'rust_analyzer'}
+  local servers = {'clangd', 'tsserver', 'pyls', 'gopls', 'rust_analyzer'--[[,'rls'--]] }
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
     }
   end
 EOF
-
-" lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
-" lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
-" lua require'lspconfig'.pyls.setup{ on_attach=require'completion'.on_attach }
-" lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
-" lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
 
 " Nvim-lsp
 nnoremap <silent> K <Cmd>lua vim.lsp.buf.hover()<CR>

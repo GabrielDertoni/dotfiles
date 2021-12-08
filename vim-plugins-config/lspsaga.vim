@@ -34,3 +34,8 @@ nnoremap <silent> <leader>gr <Cmd>Lspsaga lsp_finder<CR>
 nnoremap <silent> <leader>sd <Cmd>Lspsaga preview_definition<CR>
 " nnoremap <silent> <leader>sa <Cmd>Lspsaga code_action<CR>
 
+augroup RUST_CODE_ACTION
+    autocmd!
+    nnoremap <silent> <leader>sa <Cmd>Telescope lsp_code_actions theme=get_dropdown<CR>
+augroup END
+
