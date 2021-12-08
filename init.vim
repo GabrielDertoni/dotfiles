@@ -47,7 +47,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'glepnir/lspsaga.nvim'
 
 " Semantic language support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -64,6 +64,8 @@ Plug 'plasticboy/vim-markdown'
 " Plug 'fatih/vim-go'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'pest-parser/pest.vim'
+Plug 'PontusPersson/pddl.vim'
+Plug 'yalesov/vim-ember-script'
 
 " Cheat cheat
 Plug 'dbeniamine/cheat.sh-vim'
@@ -236,6 +238,7 @@ nnoremap <leader>rc :execute "tabe +" . fnameescape(expand("term " . expand(inpu
 augroup RUST
     autocmd!
     autocmd FileType rust let g:compile_cmd = "cargo r"
+    autocmd FileType rust vnoremap <leader>fmt :!rustfmt<CR>
 augroup END
 
 augroup PYTHON
