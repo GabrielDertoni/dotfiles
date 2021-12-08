@@ -43,7 +43,8 @@ Plug 'tjdevries/nlua.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
-Plug 'glepnir/lspsaga.nvim'
+" Plug 'glepnir/lspsaga.nvim' (deprecated)
+Plug 'tami5/lspsaga.nvim'
 
 " Semantic language support
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -264,7 +265,7 @@ nnoremap <silent> <C-S-Right> gt
 nnoremap <silent> <C-S-Left> gT
 
 " Open vimrc (init.vim)
-nnoremap <leader>vrc :tabe ~/dotfiles/init.vim<CR>
+nnoremap <leader>vrc :tabe ~/.config/nvim/init.vim<CR>
 
 let g:surround_116 = "t\rt"
 vnoremap <leader>S :call PromptSurround()<CR>
