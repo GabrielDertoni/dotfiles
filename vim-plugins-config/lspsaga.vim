@@ -10,7 +10,7 @@ saga.init_lsp_saga {
     hint_sign = '▶',
     infor_sign = '▶',
     -- dianostic_header_icon = '❌ ',
-    -- code_action_icon = '💡',
+    code_action_icon = '💡',
     -- finder_definition_icon = '🎨',
     finder_action_keys = {
         open = "<Enter>",
@@ -33,4 +33,9 @@ nnoremap <silent> <leader>gr <Cmd>Lspsaga lsp_finder<CR>
 " nnoremap <silent> <leader>gp <Cmd>Lspsaga disgnostics_jump_prev<CR>
 nnoremap <silent> <leader>sd <Cmd>Lspsaga preview_definition<CR>
 " nnoremap <silent> <leader>sa <Cmd>Lspsaga code_action<CR>
+
+augroup RUST_CODE_ACTION
+    autocmd!
+    nnoremap <silent> <leader>sa <Cmd>Telescope lsp_code_actions theme=get_dropdown<CR>
+augroup END
 

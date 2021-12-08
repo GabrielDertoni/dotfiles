@@ -1,0 +1,12 @@
+[user]
+	name = GabrielDertoni
+	email = gab.dertoni@gmail.com
+[core]
+	editor = nvim
+[alias]
+	st = status
+	cm = commit
+	sw = switch
+	ck = checkout
+	br = branch
+	graph = log --all --decorate --oneline --graph

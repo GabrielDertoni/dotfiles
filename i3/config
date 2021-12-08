@@ -1,0 +1,225 @@
+# Set mod key
+set $mod Mod4
+
+font pango:Fira Code 10
+
+# Window rules
+for_window [class="^.*"] border pixel 0
+for_window [title="Library"] floating enable
+hide_edge_borders   both
+
+# Drag floating windows (Mouse + $mod)
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 session inplace
+bindsym $mod+Shift+r restart
+
+# Exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Open applications
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec kitty -d $(xcwd)
+bindsym $mod+Print exec scrot -q 100 "/home/tron/Pictures/screenshots/%Y-%m-%d-%s-screenshot.png"
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym $mod+d exec rofi -show run -theme gruvbox-dark-hard -font "Fira Code 12" -display-run "run: "
+bindsym $mod+Shift+w exec rofi -show window -theme gruvbox-dark-hard -font "Fira Code 12"
+bindsym $mod+F3 exec ranger
+
+# Change window focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split window in horizontal
+bindsym $mod+Ctrl+h split h
+
+# Split window in vertical
+bindsym $mod+Ctrl+v split v
+
+# Enter fullscreen mode for the focused window
+bindsym $mod+f fullscreen toggle
+
+# Change window layout (Stacked, tabbed or toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle between tiling and floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling and floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Set names for workspaces
+set $ws1 "1 Main"
+set $ws2 "2 Terminal"
+set $ws3 "3 Web"
+set $ws4 "4 Program"
+set $ws5 "5 Design"
+set $ws6 "6 Media"
+
+# Switch to workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Open specific applications in floating mode
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Pamac-manager"] floating enable
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause  #is not working and I don't know why?!?!
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioStop exec playerctl pause
+bindsym XF86AudioPrev exec playerctl previous
+
+# Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Resize window
+mode "resize" {
+  bindsym h resize shrink width 5 px or 5 ppt
+  bindsym j resize grow height 5 px or 5 ppt
+  bindsym k resize shrink height 5 px or 5 ppt
+  bindsym l resize grow width 5 px or 5 ppt
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+
+# Enter resize mode
+bindsym $mod+r mode "resize"
+
+# Theme colors
+client.focused          #458588 #689d6a #1d2021 #ff79c6 #ff79c6
+client.focused_inactive #282a36 #282a36 #f8f8f2 #282a36 #282a36
+client.unfocused        #282a36 #504945 #f8f8f2 #282a36 #282a36
+client.urgent           #ff5555 #ff5555 #282a36 #ff5555 #ff5555
+client.placeholder      #282a36 #282a36 #f8f8f2 #282a36 #282a36
+
+#########
+# THEME #
+#########
+
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+
+# class                 border    backgr.   text      indic.  child_border
+client.focused          $blue     $blue     $darkgray $purple $darkgray
+client.focused_inactive $darkgray $darkgray $yellow   $purple $darkgray
+client.unfocused        $darkgray $darkgray $yellow   $purple $darkgray
+client.urgent           $red      $red      $white    $red    $red
+
+# status bar
+# exec_always --no-startup-id polybar bar
+bar {
+    position top
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    colors {
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $yellow
+        # workspaces section
+        #                  border    backgr.   text
+        focused_workspace  $aqua     $aqua     $darkgray
+        inactive_workspace $darkgray $darkgray $yellow
+        active_workspace   $darkgray $darkgray $yellow
+        urgent_workspace   $red      $red      $bg
+    }
+}
+
+###########################
+# Run commands on startup #
+###########################
+
+# Bacground image
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/mountains.jpg
+
+# Something to do with transparency and stuff, I don't really understand it.
+exec_always --no-startup-id picom -f
+
+# Setup notification configurations
+exec_always --no-startup-id dunst ~/.config/dunst/dunstrc
+
+# exec_always --no-startup-id volumeicon
+
+# Configure keyboard layouts: us and us international, use Alt+Shift to toggle
+# between, swap caps lock with escape quey
+exec_always --no-startup-id setxkbmap -layout us,us -variant ,intl -option grp:alt_shift_toggle -option caps:escape
+
+# Configure the repeat rate and delay when holding a keyboard key.
+exec_always --no-startup-id xset r rate 200 25
+
+
+
+for_window [class="feh"] floating enable

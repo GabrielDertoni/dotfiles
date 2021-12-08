@@ -77,3 +77,9 @@ export PATH=$PATH:~/.local/bin
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 bindkey -v
+
+tmuxcwd() {
+    tmux command-prompt -I $PWD -p "New session dir:" "attach -c %1"
+}
+zle -N tmuxcwd
+bindkey '^a' tmuxcwd
