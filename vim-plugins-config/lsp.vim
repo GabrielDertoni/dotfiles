@@ -7,7 +7,7 @@ lua << EOF
     require('completion').on_attach()
   end
 
-  local servers = {'clangd', 'tsserver', 'pyls', 'gopls', 'rust_analyzer'--[[,'rls'--]] }
+  local servers = {'clangd', 'tsserver', 'pylsp', 'gopls', 'rust_analyzer'--[[,'rls'--]] }
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
