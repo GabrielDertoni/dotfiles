@@ -31,17 +31,20 @@ Plug 'Iron-E/nvim-highlite'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
 Plug 'tjdevries/nlua.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
-" Plug 'glepnir/lspsaga.nvim' (deprecated)
 Plug 'tami5/lspsaga.nvim'
 
-" Semantic language support
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Auto Completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
+" Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -56,14 +59,11 @@ Plug 'rhysd/vim-clang-format'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
-" Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'pest-parser/pest.vim'
 Plug 'PontusPersson/pddl.vim'
 Plug 'yalesov/vim-ember-script'
-
-" Cheat cheat
-Plug 'dbeniamine/cheat.sh-vim'
 
 " Sourounding
 Plug 'tpope/vim-surround'
