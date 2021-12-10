@@ -1,6 +1,5 @@
-[user]
-	name = GabrielDertoni
-	email = gab.dertoni@gmail.com
+[include]
+	path = ~/.gitpersonal
 [core]
 	editor = nvim
 [alias]
@@ -10,3 +9,9 @@
 	ck = checkout
 	br = branch
 	graph = log --all --decorate --oneline --graph
+[fetch]
+	prune = true
+[merge]
+	conflictstyle = diff3
+[init]
+	defaultBranch = main
