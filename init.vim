@@ -1,9 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" Fuzzy finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 
@@ -12,21 +8,18 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " VIM enhancements
 Plug 'mbbill/undotree'
-" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'terryma/vim-multiple-cursors'
 
 " Utils
-Plug 'vim-utils/vim-man'
+Plug 'paretje/nvim-man'
 
 " GIT integration
 Plug 'airblade/vim-rooter'
 Plug 'tpope/vim-fugitive'
+Plug 'TimUntersberger/neogit'
 
 " Others
-" Plug 'tweekmonster/gofmt.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'vuciv/vim-bujo'
+Plug 'tweekmonster/gofmt.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'machakann/vim-highlightedyank'
 
@@ -55,6 +48,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Syntactic language support
+Plug 'sheerun/vim-polyglot'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'Rust-lang/rust.vim'
@@ -105,11 +99,10 @@ let g:gruvbox_invert_selection='0'
 set termguicolors
 
 " Colors
-set background=dark
 " colorscheme gruvbox
-" colorscheme base16-gruvbox-dark-hard
-colorscheme ayu
-let ayucolor = "dark"
+colorscheme base16-gruvbox-dark-hard
+" colorscheme ayu
+" let ayucolor = "dark"
 
 " disable transparent background
 set background=dark
