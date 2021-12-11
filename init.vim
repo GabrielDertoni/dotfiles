@@ -74,6 +74,10 @@ Plug 'dbeniamine/cheat.sh-vim'
 " Sourounding
 Plug 'tpope/vim-surround'
 
+" Beta
+Plug 'lewis6991/spellsitter.nvim'
+Plug 'sunjon/shade.nvim'
+
 call plug#end()
 
 " vim hardcodes background color erase even if the terminfo file does
@@ -293,3 +297,21 @@ function VPromptProg()
     let g:interpreter = input("Interpreter: ", expand(g:interpreter))
     '>put = execute('''<,''>w !' . expand(g:interpreter))
 endfunction
+
+
+lua <<EOF
+require('spellsitter').setup {
+    enable = true,
+    spellchecker = 'vimfn',
+}
+
+require('shade').setup {
+    overlay_opacity = 50,
+    opacity_step = 1,
+    keys = {
+        brightness_up    = '<C-Up>',
+        brightness_down  = '<C-Down>',
+        toggle           = '<leader>s',
+    }
+}
+EOF
