@@ -1,5 +1,4 @@
 " General configuration
-set guicursor=
 set hidden
 set noerrorbells
 set tabstop=4 softtabstop=4
@@ -41,9 +40,3 @@ set textwidth=80
 
 highlight Cursor guifg=white guibg=white
 highlight iCursor guifg=white guibg=white
-
-set guicursor=n-v-c:block-Cursor
-set guicursor=i:block-Cursor
-" set guicursor+=i:ver100-iCursor
-set guicursor+=n:blinkon0
-set guicursor+=i:blinkon0
